@@ -75,7 +75,7 @@ export function memoizeTransform(f) {
   let arg2 = null;
   let result = null;
   const memoized = (x, y) => {
-    if (x === arg1 || y === arg2) {
+    if (x === arg1 && y === arg2) {
       return result;
     } else {
       result = f(x, y);
