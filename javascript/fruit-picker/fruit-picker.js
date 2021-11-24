@@ -16,9 +16,15 @@ import { checkStatus, checkInventory } from './grocer';
  * @return {boolean}
  */
 export function isServiceOnline() {
+<<<<<<< HEAD
+  const result = checkStatus((onlineStatus) => onlineStatus);
+
+  return result === 'ONLINE' ? true : false;
+=======
   let online = checkStatus((status) => status)
 
   return online === 'ONLINE' ? true : false
+>>>>>>> 758baa92caebf1c0cc35db9f8f23a3e96840cf58
 }
 
 /**
@@ -29,6 +35,10 @@ export function isServiceOnline() {
  * @param {InventoryCallback} callback
  * @return {AvailabilityAction} the result from checkInventory
  */
+<<<<<<< HEAD
+export function pickFruit(variety, quantity, callback) {
+  throw new Error('Implement the pickFruit function');
+=======
 
 
 
@@ -48,6 +58,7 @@ export function pickFruit(variety, quantity, callback) {
   return callback()
 
   // callback(query)
+>>>>>>> 758baa92caebf1c0cc35db9f8f23a3e96840cf58
 }
 
 /**
@@ -58,12 +69,16 @@ export function pickFruit(variety, quantity, callback) {
  * @return {AvailabilityAction} whether the fruit was purchased 'PURCHASE' or 'NOOP'
  */
 export function purchaseInventoryIfAvailable(err, isAvailable) {
+<<<<<<< HEAD
+  throw new Error('Implement the purchaseInventoryIfAvailable function');
+=======
 
   if (err !== null) {
     throw new Error;
   } else {
     return isAvailable === true ? 'PURCHASE' : 'NOOP'
   }
+>>>>>>> 758baa92caebf1c0cc35db9f8f23a3e96840cf58
 }
 
 /**
@@ -74,6 +89,9 @@ export function purchaseInventoryIfAvailable(err, isAvailable) {
  * @return {AvailabilityAction} whether the fruit was purchased 'PURCHASE' or 'NOOP'
  */
 export function pickAndPurchaseFruit(variety, quantity) {
+<<<<<<< HEAD
+  throw new Error('Implement the pickAndPurchaseFruit function');
+=======
   // throw new Error('Implement the pickAndPurchaseFruit function');
   const query = {
     variety,
@@ -82,4 +100,5 @@ export function pickAndPurchaseFruit(variety, quantity) {
 
   const result = checkInventory(query, purchaseInventoryIfAvailable)
   return result
+>>>>>>> 758baa92caebf1c0cc35db9f8f23a3e96840cf58
 }

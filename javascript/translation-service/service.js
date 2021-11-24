@@ -1,7 +1,10 @@
 /// <reference path="./global.d.ts" />
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 7e3d7a9b14d1e46ea68da7f7e64c893eabde99a7
 // @ts-check
 //
 // The lines above enable type checking for this file. Various IDEs interpret
@@ -29,6 +32,7 @@ export class TranslationService {
    * @param {string} text
    * @returns {Promise<string>}
    */
+<<<<<<< HEAD
 
 
 
@@ -62,6 +66,12 @@ export class TranslationService {
 
 
 
+=======
+  free(text) {
+    return this.api.fetch(text).then((res) => res.translation);
+  }
+
+>>>>>>> 7e3d7a9b14d1e46ea68da7f7e64c893eabde99a7
   /**
    * Batch translates the given texts using the free service.
    *
@@ -73,7 +83,16 @@ export class TranslationService {
    * @returns {Promise<string[]>}
    */
   batch(texts) {
+<<<<<<< HEAD
     throw new Error('Implement the batch function');
+=======
+    // throw new Error('Implement the batch function');
+    if (texts.length === 0) {
+      return Promise.reject(new BatchIsEmpty());
+    }
+
+    return Promise.all(texts.map((text) => this.free(text)));
+>>>>>>> 7e3d7a9b14d1e46ea68da7f7e64c893eabde99a7
   }
 
   /**
@@ -86,7 +105,19 @@ export class TranslationService {
    * @returns {Promise<void>}
    */
   request(text) {
+<<<<<<< HEAD
     throw new Error('Implement the request function');
+=======
+    const req = () =>
+      new Promise((resolve, reject) =>
+        this.api.request(text, (error) =>
+          error ? reject(error) : resolve(undefined)
+        )
+      );
+    return req()
+      .catch(() => req())
+      .catch(() => req());
+>>>>>>> 7e3d7a9b14d1e46ea68da7f7e64c893eabde99a7
   }
 
   /**
@@ -100,7 +131,18 @@ export class TranslationService {
    * @returns {Promise<string>}
    */
   premium(text, minimumQuality) {
+<<<<<<< HEAD
     throw new Error('Implement the premium function');
+=======
+    return this.api
+      .fetch(text)
+      .catch(() => this.request(text).then(() => this.api.fetch(text)))
+      .then((response) => {
+        if (response.quality < minimumQuality)
+          throw new QualityThresholdNotMet(text);
+        return response.translation;
+      });
+>>>>>>> 7e3d7a9b14d1e46ea68da7f7e64c893eabde99a7
   }
 }
 
