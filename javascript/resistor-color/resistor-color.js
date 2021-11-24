@@ -16,18 +16,12 @@ export const COLORS = [
     ];
 
 export const colorCode = (colorToFind) => {
-  let colorCodeIndex = null;
+  let colorCodeIndex = COLORS.indexOf(colorToFind)
 
-  COLORS.forEach((color, index) => {
-    if (color === colorToFind.toLowerCase()) {
-      colorCodeIndex = index
-    }
-  })
-
-  return colorCodeIndex
+  return colorCodeIndex != - 1 ? colorCodeIndex : null
 };
 
-const result = colorCode('black')
+const result = colorCode('white')
 
 result
 
